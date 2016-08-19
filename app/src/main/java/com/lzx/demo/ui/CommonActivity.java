@@ -21,11 +21,10 @@ import com.lzx.demo.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SwipeMenuActivity extends AppCompatActivity {
+public class CommonActivity extends AppCompatActivity {
 
-    private static final Class<?>[] ACTIVITY = {AllMenuActivity.class, ViewTypeMenuActivity.class,DragMenuListActivity.class,GridDragMenuActivity.class,
-            SwipeDeleteListActivity.class,SwipeDeleteHorizontalListActivity.class, DragSwipeFlagsActivity.class, DefineActivity.class};
-    private String[] TITLE ;
+    private static final Class<?>[] ACTIVITY = {LinearLayoutActivity.class, EndlessLinearLayoutActivity.class, EndlessGridLayoutActivity.class, EndlessStaggeredGridLayoutActivity.class,EmptyViewActivity.class};
+    private static final String[] TITLE = {"LinearLayoutSample", "EndlessLinearLayoutActivity", "EndlessGridLayoutActivity", "EndlessStaggeredGridLayoutActivity","EmptyViewActivity"};
 
     private RecyclerView mRecyclerView = null;
 
@@ -39,10 +38,6 @@ public class SwipeMenuActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setTitle("SwipeMenu汇总");
-
-        TITLE = getResources().getStringArray(R.array.swipe_main_item);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -115,8 +110,8 @@ public class SwipeMenuActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        ListItem listItem = mDataList.get(RecyclerViewUtils.getAdapterPosition(mRecyclerView, SwipeMenuActivity.DataAdapter.ViewHolder.this));
-                        startActivity(new Intent(SwipeMenuActivity.this, listItem.activity));
+                        ListItem listItem = mDataList.get(RecyclerViewUtils.getAdapterPosition(mRecyclerView, CommonActivity.DataAdapter.ViewHolder.this));
+                        startActivity(new Intent(CommonActivity.this, listItem.activity));
                     }
                 });
             }
@@ -135,8 +130,6 @@ public class SwipeMenuActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jdsjlzx/LRecyclerView"));
             this.startActivity(intent);
             return true;
-        } else if (item.getItemId() == android.R.id.home) {
-            finish();
         }
 
         return super.onOptionsItemSelected(item);

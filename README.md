@@ -26,7 +26,7 @@ allprojects {
 
 Step 2. 在你的model的build.gradle文件中增加LRecyclerView依赖。
 ```
-compile 'com.github.jdsjlzx:LRecyclerView:1.0.3'
+compile 'com.github.jdsjlzx:LRecyclerView:1.0.6'
 ```
 
 LRecyclerView requires at minimum Java 7 or Android 4.0.
@@ -36,10 +36,11 @@ LRecyclerView requires at minimum Java 7 or Android 4.0.
 1. 下拉刷新、滑动到底部自动加载下页数据； 
 2. 可以方便添加Header和Footer；
 3. 头部下拉样式可以自定义；
-4. 具备item点击和长按事件。
+4. 具备item点击和长按事件；
 5. 网络错误加载失败点击Footer重新请求数据；
 6. 可以动态为FooterView赋予不同状态（加载中、加载失败、滑到最底等）；
-7. SwipeMenu系列功能，包括Item侧滑菜单、长按拖拽Item，滑动删除Item等。
+7. SwipeMenu系列功能，包括Item侧滑菜单、长按拖拽Item，滑动删除Item等；
+8. 实现viewpager的功能。
 
 <br>注意：EndlessLinearLayoutActivity.java类里面有标准完整的使用方法，请尽量在这个界面看效果。</b>
 
@@ -49,6 +50,21 @@ LRecyclerView requires at minimum Java 7 or Android 4.0.
 [点我下载](https://raw.githubusercontent.com/jdsjlzx/LRecyclerView/master/app/app-release.apk)
 
 ##功能介绍
+
+
+### 填充数据
+
+```
+mDataAdapter = new DataAdapter(this);
+mDataAdapter.setData(dataList);
+
+mLRecyclerViewAdapter = new LRecyclerViewAdapter(this, mDataAdapter);
+mRecyclerView.setAdapter(mLRecyclerViewAdapter);
+```
+
+> 
+1. DataAdapter是用户自己真正的adapter，用户自己定义；
+2. LRecyclerViewAdapter提供了一些实用的功能，使用者不用关心它的实现，只需构造的时候把自己的mDataAdapter以参数形式传进去即可。
 
 ### 添加HeaderView、FooterView
 ```
@@ -542,7 +558,7 @@ mRecyclerView.setItemViewSwipeEnabled(true);// 开启滑动删除。        mRec
 mRecyclerView.setLScrollListener(LScrollListener); 
 RecyclerViewUtils.setFooterView(mRecyclerView, new SampleFooter(this));
 ```
-
+2. 不要SwipeRefreshLayout与LRecyclerView一起使用，会有冲突。
 
 ##Thanks
 
@@ -555,5 +571,5 @@ RecyclerViewUtils.setFooterView(mRecyclerView, new SampleFooter(this));
 
 觉得本框架对你有帮助，不妨打赏赞助我一下，让我有动力走的更远。
 
-<img src="http://img.blog.csdn.net/20160524104553306" width=240 height=280 />
+<img src="http://img.blog.csdn.net/20160812223409875" width=280 height=280 />
 

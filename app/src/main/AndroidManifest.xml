@@ -23,6 +23,7 @@
         </activity>
 
         <activity android:name=".MainActivity" />
+        <activity android:name=".ui.CommonActivity" />
         <activity android:name=".ui.LinearLayoutActivity" />
         <activity android:name=".ui.EndlessLinearLayoutActivity" />
         <activity android:name=".ui.EndlessGridLayoutActivity" />
@@ -36,6 +37,7 @@
         <activity android:name=".ui.DragMenuListActivity" />
         <activity android:name=".ui.GridDragMenuActivity" />
         <activity android:name=".ui.SwipeDeleteListActivity" />
+        <activity android:name=".ui.SwipeDeleteHorizontalListActivity" />
         <activity android:name=".ui.DragSwipeFlagsActivity" />
         <activity android:name=".ui.DefineActivity" />
         <activity android:name=".ui.SwipeMenuActivity" />
